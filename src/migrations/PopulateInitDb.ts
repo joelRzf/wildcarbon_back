@@ -11,7 +11,8 @@ import getRandomActivities from '../init_db/activities/getRandomActivities'
 import getActivityTypes from '../init_db/activities/getActivityTypes'
 
 export class PopulateInitDb implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
+  // public async up(queryRunner: QueryRunner): Promise<void> {
+  public async up(): Promise<void> {
     const activityTypeRepository = dataSource.getRepository(ActivityType)
     const activityTypes = await activityTypeRepository.find()
 
@@ -33,8 +34,8 @@ export class PopulateInitDb implements MigrationInterface {
 
     if (sampleUser === null) {
       const sampleUserInfos = await getUserInfos({
-        firstname: 'Sample',
-        lastname: 'Demo',
+        firstname: 'john',
+        lastname: 'doe',
       })
       const sampleUserObject = userRepository.create(sampleUserInfos)
       await userRepository.save(sampleUserObject)

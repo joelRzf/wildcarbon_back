@@ -20,7 +20,7 @@ const getUserInfos = async ({
     lastname: lastname,
     email: `${firstname.toLowerCase().trim()}.${lastname
       .toLowerCase()
-      .trim()}@dev.com`,
+      .trim()}@email.com`,
     password: hashedPassword,
     visibility,
   }

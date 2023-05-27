@@ -1,5 +1,5 @@
 const getuserMutualPassword = (): string => {
-  return 'ABcd1234*'
+  return 'Azerty1234'
 }
 
 export default getuserMutualPassword

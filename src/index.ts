@@ -28,7 +28,7 @@ async function start(): Promise<void> {
     // initialisation BDD en DEV
     console.log('🚀 ~ migration init DB is starting...')
     const migration = new PopulateInitDb()
-    await migration.up(dataSource.createQueryRunner())
+    await migration.up()
     console.log('🚀 ~ migration init DB done ✅')
 
     const schema = await buildSchema({
