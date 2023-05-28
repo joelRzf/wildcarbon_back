@@ -46,7 +46,7 @@ export class PopulateInitDb implements MigrationInterface {
       const existingUsers = await dataSource.getRepository(User).find()
 
       if (existingUsers.length <= 1) {
-        // means only the sample demo user was added
+        // means only the sample user (john.doe@email.com) was added
         // add 10 dev users to the database, 8 public and 2 privates, all with common password
         const devUsers = await getDevUsersSetObjects()
         const devUsersObjects = devUsers.map((user) =>
