@@ -23,7 +23,7 @@ services:
         condition: service_healthy
 
   back:
-    build: ./Dockerfile
+    build: ./
     ports:
       - 5050:5050
     restart: always
