@@ -34,9 +34,9 @@ services:
     depends_on:
       dbtest:
         condition: service_healthy
-    # command: npm run dev
+    command: npm run dev
     volumes:
-      - ./back/src/:/app/src/
+      - ./src/:/app/src/
     healthcheck:
       test: 'curl --fail --request POST --header ''content-type: application/json'' --url ''http://localhost:5050'' --data ''{"query":"query { __typename }"}'' || exit 1'
       interval: 2s
@@ -46,6 +46,9 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
+    depends_on:
+      back:
+        condition: service_healthy
     restart: always
     ports:
       - 1025:1025
