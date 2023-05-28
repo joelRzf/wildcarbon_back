@@ -34,7 +34,7 @@ services:
     depends_on:
       dbtest:
         condition: service_healthy
-    command: npm run dev
+    # command: npm run dev
     volumes:
       - ./back/src/:/app/src/
     healthcheck:
