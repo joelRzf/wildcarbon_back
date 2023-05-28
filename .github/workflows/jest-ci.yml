@@ -22,7 +22,7 @@ jobs:
         run: docker compose -f docker-compose.integration.test.yml up --build --exit-code-from testrunner
   docker:
     needs: jest-test-back
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/dev' 
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -34,6 +34,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # build an push the newly created image
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
