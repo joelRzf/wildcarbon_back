@@ -12,6 +12,6 @@ RUN npm i
 
 COPY tsconfig.json ./
  
-COPY src src
+COPY ./src src
  
 CMD npm start
