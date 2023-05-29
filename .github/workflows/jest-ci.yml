@@ -38,7 +38,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
-          context: ../
+          context: ./
           file: Dockerfile
           push: true
           tags: razajoeldev/serasera-carbon-back:tagname
