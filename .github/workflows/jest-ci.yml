@@ -40,4 +40,4 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_IMAGE_NAME }}:tagname
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/${{secrets.DOCKER_HUB_CLIENT_IMAGE_NAME}}:tagname
