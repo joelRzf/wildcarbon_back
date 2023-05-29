@@ -34,10 +34,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      # build an push the newly created image to dockerhub
+      # build and push to dockerhub the newly created image 
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/${{secrets.DOCKER_HUB_SERVER_IMAGE_NAME}}:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/${{secrets.DOCKERHUB_SERVER_IMAGE_NAME}}:latest
