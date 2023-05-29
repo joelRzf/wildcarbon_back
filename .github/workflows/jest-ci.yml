@@ -41,4 +41,4 @@ jobs:
           context: '../../'
           file: '../../Dockerfile'
           push: true
-          tags: razajoeldev/serasera-carbon-back:1
+          tags: razajoeldev/serasera-carbon-back:tagname
