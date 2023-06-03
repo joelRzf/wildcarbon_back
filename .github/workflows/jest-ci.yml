@@ -22,7 +22,7 @@ jobs:
         run: docker compose -f docker-compose.integration.test.yml up --build --exit-code-from testrunner
   docker:
     needs: jest-test-back
-    if: github.ref == 'refs/heads/dev' 
+    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
