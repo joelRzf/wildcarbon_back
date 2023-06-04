@@ -15,7 +15,7 @@ import { DeleteAllEntitiesResolver } from './resolvers/testResolver'
 import { GoodDealVoteResolver } from './resolvers/goodDealVoteResolver'
 import { GetStatsResolver } from './resolvers/getStatsResolver'
 import { FollowingResolver } from './resolvers/followingResolver'
-import { PopulateInitDb } from './migrations/PopulateInitDb'
+// import { PopulateInitDb } from './migrations/PopulateInitDb'
 
 dotenv.config()
 
@@ -26,10 +26,10 @@ async function start(): Promise<void> {
     await dataSource.initialize()
 
     // initialisation BDD en DEV
-    console.log('🚀 ~ migration init DB is starting...')
-    const migration = new PopulateInitDb()
-    await migration.up()
-    console.log('🚀 ~ migration init DB done ✅')
+    // console.log('🚀 ~ migration init DB is starting...')
+    // const migration = new PopulateInitDb()
+    // await migration.up()
+    // console.log('🚀 ~ migration init DB done ✅')
 
     const schema = await buildSchema({
       resolvers: [
