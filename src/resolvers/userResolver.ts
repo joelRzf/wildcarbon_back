@@ -261,9 +261,9 @@ export class UserResolver {
 
     const userFromDB = await dataSource.manager.save(User, newUser)
 
-    if (process.env.DB !== 'dbtest') {
-      await new Email(userFromDB, getFrontendBaseUrl()).sendWelcome()
-    }
+    // if (process.env.DB !== 'dbtest') {
+    //   await new Email(userFromDB, getFrontendBaseUrl()).sendWelcome()
+    // }
 
     return userFromDB
   }
