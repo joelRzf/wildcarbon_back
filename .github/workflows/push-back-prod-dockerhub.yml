@@ -23,4 +23,4 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/${{secrets.DOCKERHUB_SERVER_IMAGE_NAME_PROD}}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_SERVER_IMAGE_NAME_PROD }}:latest
