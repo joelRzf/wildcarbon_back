@@ -15,11 +15,94 @@ import { DeleteAllEntitiesResolver } from './resolvers/testResolver'
 import { GoodDealVoteResolver } from './resolvers/goodDealVoteResolver'
 import { GetStatsResolver } from './resolvers/getStatsResolver'
 import { FollowingResolver } from './resolvers/followingResolver'
+import { ActivityType } from './entities/activityType'
+import { IActivityType } from './interfaces/entities/IActivityType'
 // import { PopulateInitDb } from './migrations/PopulateInitDb'
 
 dotenv.config()
 
 const port = 5050
+export enum activityTypeLabel {
+  Transport = 'Transport',
+  Numerique = 'Numérique',
+  Alimentation = 'Alimentation',
+  Energie = 'Energie',
+  Electromenager = 'Electroménager',
+  Autre = 'Autre',
+  QuantiteKG = 'Quantité (kg)',
+}
+
+export enum activityTypeName {
+  transport = 'transport',
+  numeric = 'numeric',
+  food = 'food',
+  energy = 'energy',
+  appliance = 'appliance',
+  other = 'other',
+  all = 'all',
+}
+
+const getActivityTypes = () => {
+  return [
+    {
+      activityTypeId: 1,
+      backgroundColor: '#f9ca24',
+      emoji: '🚗',
+      label: activityTypeLabel.Transport,
+      name: activityTypeName.transport,
+    },
+    {
+      activityTypeId: 2,
+      backgroundColor: '#f0932b',
+      emoji: '💻',
+      label: activityTypeLabel.Numerique,
+      name: activityTypeName.numeric,
+    },
+    {
+      activityTypeId: 3,
+      backgroundColor: '#eb4d4b',
+      emoji: '🍕',
+      label: activityTypeLabel.Alimentation,
+      name: activityTypeName.food,
+    },
+    {
+      activityTypeId: 4,
+      backgroundColor: '#6ab04c',
+      emoji: '⚡',
+      label: activityTypeLabel.Energie,
+      name: activityTypeName.energy,
+    },
+    {
+      activityTypeId: 5,
+      backgroundColor: '#7ed6df',
+      emoji: '🚿',
+      label: activityTypeLabel.Electromenager,
+      name: activityTypeName.appliance,
+    },
+    {
+      activityTypeId: 6,
+      backgroundColor: '#686de0',
+      emoji: '🤷‍♂️',
+      label: activityTypeLabel.Autre,
+      name: activityTypeName.other,
+    },
+  ]
+}
+
+export default getActivityTypes
+
+async function createActivityTypes (){
+  const activityTypeRepository = dataSource.getRepository(ActivityType)
+  const activityTypes = await activityTypeRepository.find()
+  if(activityTypes.length !==6){
+    await activityTypeRepository.delete({})
+    const allActivityTypes = getActivityTypes()
+    const activityTypeObjects = allActivityTypes.map((type) =>
+    activityTypeRepository.create(type)
+  )
+  await activityTypeRepository.insert(activityTypeObjects)
+  }
+}
 
 async function start(): Promise<void> {
   try {
@@ -30,6 +113,10 @@ async function start(): Promise<void> {
     // const migration = new PopulateInitDb()
     // await migration.up()
     // console.log('🚀 ~ migration init DB done ✅')
+
+  console.log('🚀 ~ activityTypes creation in DB  is starting...')
+    await createActivityTypes()
+    console.log('🚀 ~ activityTypes creation in DB done ✅')
 
     const schema = await buildSchema({
       resolvers: [
